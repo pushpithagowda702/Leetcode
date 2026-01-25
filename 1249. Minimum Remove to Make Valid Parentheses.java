@@ -2,7 +2,6 @@ class Solution {
     public String minRemoveToMakeValid(String s) {
         Set<Integer> set = new HashSet<>();
         Stack<Integer> stack = new Stack<>();
-
         for(int i=0; i<s.length(); i++) {
             char c = s.charAt(i);
             if(c == '(') {
