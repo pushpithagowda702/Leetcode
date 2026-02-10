@@ -15,7 +15,7 @@ class Solution {
             if(node != null) {
                res.add(node.val);
                if(node.right != null) {
-                stack.push(node.right);
+                    stack.push(node.right);
                 }
                 if(node.left != null) {
                     stack.push(node.left);
