@@ -40,12 +40,11 @@ public class HeapImp {
             System.out.println(heap[i]);
         }
     }
+
     public static void main(String[] args) {
         int[] arr = new int[] {10,5,7,3,71};
 
         HeapImp heapImp = new HeapImp(arr);
         heapImp.buildHeap();
-
-        
     }
 }
