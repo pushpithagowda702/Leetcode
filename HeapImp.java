@@ -1,3 +1,4 @@
+
 public class HeapImp {
     int heapSize;
     int heap[];
@@ -17,11 +18,10 @@ public class HeapImp {
         int largest = index;
         int leftChild = index * 2 + 1;
         int rightChild = index * 2 + 2;
-
-        if(leftChild <= heapSize && heap[leftChild] < heap[index]) {
+        if(leftChild <= heapSize && heap[leftChild] > heap[index]) {
             index = leftChild;
         }
-        if(rightChild <= heapSize && heap[rightChild] < heap[index]) {
+        if(rightChild <= heapSize && heap[rightChild] > heap[index]) {
             index = rightChild;
         }
 
@@ -31,20 +31,53 @@ public class HeapImp {
         }
     }
 
+    public int extractMax() {
+        int max = heap[0];
+        swap(heapSize, 0);
+        heapSize--;
+        heapify(0);
+        printHeap();
+        return max;
+    }
+
+    public void increaseElement(int index, int value) {
+        heap[index] = value;
+
+        int parentInd = (int) (Math.ceil(index/2)) - 1;
+            System.out.println(parentInd + " " + index +  " " + Math.ceil(index/2));
+
+        while(parentInd >= 0) {
+            if(heap[parentInd] > heap[index]) {
+                break;
+            }
+            swap(parentInd, index);
+            index = parentInd;
+            parentInd = (int) (Math.ceil(index/2)) - 1;
+            System.out.println(parentInd);
+        }
+        printHeap();
+    }
+
     public void buildHeap() {
-        for(int i=((heapSize/2) - 1); i<=0; i--) {
+        for(int i=((heapSize/2) - 1); i>=0; i--) {
             heapify(i);
         }
+    }
 
-        for(int i=0; i<heap.length; i++) {
-            System.out.println(heap[i]);
+    public void printHeap() {
+        for(int i=0; i<=heapSize; i++) {
+            System.out.print(heap[i] + " ");
         }
+        System.out.println();
     }
 
     public static void main(String[] args) {
         int[] arr = new int[] {10,5,7,3,71};
-
         HeapImp heapImp = new HeapImp(arr);
         heapImp.buildHeap();
+        heapImp.printHeap();
+        // int max = heapImp.extractMax();
+        // System.out.println(max);
+        heapImp.increaseElement(3, 15);
     }
 }
