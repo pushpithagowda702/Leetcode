@@ -43,18 +43,24 @@ public class HeapImp {
     public void increaseElement(int index, int value) {
         heap[index] = value;
 
-        int parentInd = (int) (Math.ceil(index/2)) - 1;
-            System.out.println(parentInd + " " + index +  " " + Math.ceil(index/2));
+        int parentInd = (int) (Math.ceil(index/2.0)) - 1;
 
-        while(parentInd >= 0) {
+        while(parentInd >= 0 && heap[index] > heap[parentInd]) {
             if(heap[parentInd] > heap[index]) {
                 break;
             }
             swap(parentInd, index);
             index = parentInd;
             parentInd = (int) (Math.ceil(index/2)) - 1;
-            System.out.println(parentInd);
         }
+        printHeap();
+    }
+
+    public void decreaseElement(int index, int value) {
+        if(index < 0 || index > heapSize) return;
+
+        heap[index] = value;
+        heapify(index);
         printHeap();
     }
 
@@ -78,6 +84,7 @@ public class HeapImp {
         heapImp.printHeap();
         // int max = heapImp.extractMax();
         // System.out.println(max);
-        heapImp.increaseElement(3, 15);
+        // heapImp.increaseElement(3, 15);
+        heapImp.decreaseElement(0, 4);
     }
 }
