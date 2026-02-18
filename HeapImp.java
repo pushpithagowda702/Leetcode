@@ -41,6 +41,7 @@ public class HeapImp {
     }
 
     public void increaseElement(int index, int value) {
+        if(index < 0 || index > heapSize) return;
         heap[index] = value;
 
         int parentInd = (int) (Math.ceil(index/2.0)) - 1;
