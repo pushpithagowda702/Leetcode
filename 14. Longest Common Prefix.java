@@ -13,7 +13,6 @@ class Solution {
                     sol = sol.substring(0, j);
                     break;
                 }
-
                 if(j == Math.min(curr.length(), sol.length()) - 1) sol = sol.substring(0, j + 1);
             }
         }
