@@ -10,7 +10,6 @@ class Solution {
             if(num > 0) res.add(0, num * (int) Math.pow(10, i));
             i++;
         }
-
         int[] sol = res.stream().mapToInt(Integer::intValue).toArray();
         return sol;
     }
