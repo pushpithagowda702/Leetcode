@@ -4,7 +4,6 @@ class Solution {
         ListNode tail = head;
         int m = 1;
         ListNode slow = null;
-
         while(tail.next != null ) {
             tail = tail.next;
             if(n <= m) {
