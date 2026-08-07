@@ -1,7 +1,6 @@
 class Solution {
     public TreeNode deleteNode(TreeNode root, int key) {
         if(root == null) return root;
-
         if(root.val > key) {
             root.left = deleteNode(root.left, key);
         } else if(root.val < key) {
